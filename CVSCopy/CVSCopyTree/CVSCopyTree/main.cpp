@@ -26,7 +26,14 @@ int CreateTarget(string dir)
 		drive.append(tok);
 		BOOL err = CreateDirectory(drive.c_str(), NULL);
 		if(err == ERROR_ALREADY_EXISTS || err == ERROR_SUCCESS || err == 1)
+		{
+			if(err == ERROR_SUCCESS)
+			{
+				if(stricmp(tok, "CVS") == 0)
+					SetFileAttributes(drive.c_str(), FILE_ATTRIBUTE_HIDDEN);
+			}
 			continue;
+		}
 		else
 		{
 			ret = -1;
