@@ -21,8 +21,7 @@ def copy_target(src, dst):
 
 try:
     FILE_ATTRIBUTE_HIDDEN = 0x02
-    source_arr = sys.argv[2].split(' ')[:-1]
-    #print source_arr
+    source_arr = sys.argv[2:]
     #source_arr = [source[0:-1] for source in source_arr]
     #print 'Last is space: ' + str(source[-1].isspace())
     #print sys.argv
