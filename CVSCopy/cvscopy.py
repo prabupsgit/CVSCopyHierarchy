@@ -29,13 +29,12 @@ try:
         source_tokens = [x for x in source.split('\\')]
         tempsource = ''
         dest = sys.argv[1]
-        tempsource = source_tokens[0] + '\\' + source_tokens[1]
+        tempsource = source_tokens[0] + '\\' + source_tokens[1] + '\\' + source_tokens[2] + '\\' + source_tokens[3]
         end = len(source_tokens)
         if os.path.isfile(source):
             end = -1
 
-        for tokens in source_tokens[2: end]:
-
+        for tokens in source_tokens[4: end]:
             dest = os.path.join(dest, tokens)
             create_tree(dest)
 
@@ -44,6 +43,11 @@ try:
 
             tempsource = os.path.join(tempsource, tokens)
             tempsrccvs = os.path.join(tempsource, "CVS")
+
+
+            #print tempsource
+            #print tempsrccvs
+            #raw_input()
 
             if(os.path.exists(tempsrccvs) and os.path.isdir(tempsrccvs)):
                 destcvs = os.path.join(dest, "CVS")
